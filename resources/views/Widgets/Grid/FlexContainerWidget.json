@@ -1,0 +1,32 @@
+{
+    "identifier": "Ceres::FlexContainerWidget",
+    "label": "Widget.flexContainerLabel",
+    "previewImageURL": "/images/widgets/grid-4-col.svg",
+    "type": "structure",
+    "categories": ["structure"],
+    "position": 100,
+    "widgetClass": "Ceres\\Widgets\\Grid\\FlexContainerWidget",
+    "settings": {
+        "customClass":"@include(customClass)",
+        "direction": {
+            "type": "select",
+            "required": true,
+            "defaultValue": "row",
+            "options": {
+                "name": "Widget.flexContainerDirectionLabel",
+                "tooltipText": "Widget.flexContainerDirectionTooltip",
+                "listBoxValues": [
+                    {
+                        "value": "row",
+                        "caption": "Widget.flexContainerDirectionRow"
+                    },
+                    {
+                        "value": "column",
+                        "caption": "Widget.flexContainerDirectionColumn"
+                    }
+                ]
+            }
+        },
+        "spacing":"@include(spacing)"
+    }
+}

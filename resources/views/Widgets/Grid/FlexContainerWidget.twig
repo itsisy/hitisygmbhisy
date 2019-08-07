@@ -1,0 +1,14 @@
+{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+
+{% set customClass      = widget.settings.customClass.mobile %}
+{% set direction        = widget.settings.direction.mobile %}
+{% set spacingSettings  = widget.settings.spacing %}
+{% set hasSpacing       = spacingSettings.customMargin.mobile or spacingSettings.customPadding.mobile %}
+{% set inlineSpacings   = WidgetHelper.getInlineSpacings(spacingSettings, spacingSettings.customPadding.mobile, spacingSettings.customMargin.mobile) %}
+{% set spacingClasses   = WidgetHelper.getSpacingClasses(spacingSettings, spacingSettings.customPadding.mobile, spacingSettings.customMargin.mobile) %}
+
+<div class="widget-flex-container {{ customClass }} {{ spacingClasses }}"{% if inlineSpacings | length > 0 %} style="{{ inlineSpacings }}"{% endif %}>
+    <div class="widget-inner flex-wrap flex-{{ direction }}"{% if isPreview %} data-builder-child-container="items"{% endif %}>
+        {{ children.items | raw }}
+    </div>
+</div>

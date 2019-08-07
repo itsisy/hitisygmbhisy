@@ -4826,6 +4826,89 @@
         }
     },
     {
+        "identifier": "Ceres::FlexContainerWidget",
+        "label": "Widget.flexContainerLabel",
+        "previewImageURL": "/images/widgets/grid-4-col.svg",
+        "type": "structure",
+        "categories": [
+            "structure"
+        ],
+        "position": 100,
+        "widgetClass": "Ceres\\Widgets\\Grid\\FlexContainerWidget",
+        "settings": {
+            "customClass": {
+                "type": "text",
+                "required": false,
+                "defaultValue": "",
+                "options": {
+                    "name": "Widget.customClass",
+                    "tooltipText": "Widget.customClassTooltip"
+                }
+            },
+            "direction": {
+                "type": "select",
+                "required": true,
+                "defaultValue": "row",
+                "options": {
+                    "name": "Widget.flexContainerDirectionLabel",
+                    "tooltipText": "Widget.flexContainerDirectionTooltip",
+                    "listBoxValues": [
+                        {
+                            "value": "row",
+                            "caption": "Widget.flexContainerDirectionRow"
+                        },
+                        {
+                            "value": "column",
+                            "caption": "Widget.flexContainerDirectionCol"
+                        }
+                    ]
+                }
+            },
+            "spacing": {
+                "type": "vertical",
+                "options": {
+                    "name": "Widget.widgetSpacing"
+                },
+                "children": {
+                    "customPadding": {
+                        "type": "checkbox",
+                        "options": {
+                            "name": "Widget.widgetCustomPadding"
+                        }
+                    },
+                    "padding": {
+                        "type": "spacing",
+                        "isVisible": "!!spacing.customPadding",
+                        "options": {
+                            "units": [
+                                "px",
+                                "rem"
+                            ],
+                            "direction": "all"
+                        }
+                    },
+                    "customMargin": {
+                        "type": "checkbox",
+                        "options": {
+                            "name": "Widget.widgetCustomMargin"
+                        }
+                    },
+                    "margin": {
+                        "type": "spacing",
+                        "isVisible": "!!spacing.customMargin",
+                        "options": {
+                            "units": [
+                                "px",
+                                "rem"
+                            ],
+                            "direction": "all"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
         "identifier": "Ceres::FourColumnWidget",
         "label": "Widget.gridFourColumnLabel",
         "previewImageURL": "/images/widgets/grid-4-col.svg",
