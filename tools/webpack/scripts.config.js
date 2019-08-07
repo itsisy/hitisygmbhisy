@@ -1,3 +1,4 @@
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const path = require('path');
 
 module.exports = (env) => {
@@ -7,7 +8,7 @@ module.exports = (env) => {
         mode: env.prod ? 'production' : 'development',
         entry: './resources/js/src/app/index.js',
         output: {
-            filename: '../../../resources/js/dist/wp-ceres' + (env.prod ? '.min' : '') + '.js',
+            filename: '../../../resources/js/dist/wp-ceres' + (env.pRrod ? '.min' : '') + '.js',
             path: path.resolve(__dirname, 'dist')
         },
         resolve: {
@@ -18,6 +19,10 @@ module.exports = (env) => {
         devtool: 'source-map',
         module: {
             rules: [
+                {
+                    test: /\.vue$/,
+                    loader: 'vue-loader'
+                },
                 {
                     test: require.resolve('jquery'),
                     use: [
@@ -42,6 +47,10 @@ module.exports = (env) => {
                     }
                 }
             ]
-        }
+        },
+        plugins: [
+            new VueLoaderPlugin()
+        ]
     }
 };
+

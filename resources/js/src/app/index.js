@@ -203,7 +203,25 @@ import store from "./store";
 // Bootstrap frameworks
 // =========================
 
+import sfc from "./components/sfc/sfc.vue"
+
+// https://github.com/vuejs/vue/issues/4795
+const mount = Vue.prototype.$mount;
+Vue.prototype.$mount = function (el, hydrating) {
+  const options = this.$options;
+
+  if (options.templateOverride && typeof options.templateOverride === 'string' && options.templateOverride.charAt(0) === '#' && document.querySelector(options.templateOverride)) {
+  	let renderFunctions = Vue.compile(document.querySelector(options.templateOverride).innerHTML);
+  	Object.assign(options, renderFunctions);
+  }
+
+  return mount.call(this, el, hydrating);
+}
+
 const vueApp = new Vue({
     el: "#vue-app",
-    store
+    store,
+    components: {
+        sfc
+    }
 });

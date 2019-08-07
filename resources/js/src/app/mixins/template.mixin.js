@@ -5,7 +5,7 @@ Vue.mixin({
     {
         if (this.$props && this.$props.template)
         {
-            this.$options.template = this.$props.template;
+            this.$options.template = document.querySelector(this.$props.template);
         }
     }
 });
