@@ -3,12 +3,13 @@
 // =========================
 
 import Vue from "vue";
+window.Vue = Vue;
 
 import jQuery from "jquery";
 window.jQuery = jQuery;
 window.$ = jQuery;
 
-import "bootstrap"
+import "bootstrap";
 
 // =========================
 // COMPONENTS
@@ -203,25 +204,53 @@ import store from "./store";
 // Bootstrap frameworks
 // =========================
 
-import sfc from "./components/sfc/sfc.vue"
+import sfc from "./components/sfc/sfc.vue";
+import "./main";
 
 // https://github.com/vuejs/vue/issues/4795
 const mount = Vue.prototype.$mount;
-Vue.prototype.$mount = function (el, hydrating) {
-  const options = this.$options;
 
-  if (options.templateOverride && typeof options.templateOverride === 'string' && options.templateOverride.charAt(0) === '#' && document.querySelector(options.templateOverride)) {
-  	let renderFunctions = Vue.compile(document.querySelector(options.templateOverride).innerHTML);
-  	Object.assign(options, renderFunctions);
-  }
+Vue.prototype.$mount = function(el, hydrating)
+{
+    const options = this.$options;
 
-  return mount.call(this, el, hydrating);
-}
+    if (options.templateOverride && typeof options.templateOverride === "string" && options.templateOverride.charAt(0) === "#" && document.querySelector(options.templateOverride))
+    {
+        const renderFunctions = Vue.compile(document.querySelector(options.templateOverride).innerHTML);
 
-const vueApp = new Vue({
-    el: "#vue-app",
-    store,
-    components: {
-        sfc
+        Object.assign(options, renderFunctions);
     }
-});
+
+    return mount.call(this, el, hydrating);
+};
+
+// eslint-disable-next-line no-unused-vars
+window.vueEventHub = new Vue();
+
+if (App.config.log.checkSyntax)
+{
+    const rootElement = document.getElementById("vue-app");
+
+    rootElement.innerHTML = rootElement.innerHTML.replace(/(?:^|\s)(?::|v-bind:)\S+=(?:""|'')/g, "");
+
+    window.vueApp = new Vue({
+        store: window.ceresStore,
+        components: [sfc]
+    });
+
+    vueApp.$mount( rootElement.cloneNode(true) );
+
+    if (vueApp.$el.id === "vue-app")
+    {
+        document.body.replaceChild( vueApp.$el, rootElement );
+    }
+}
+else
+{
+    // eslint-disable-next-line no-unused-vars
+    window.vueApp = new Vue({
+        el: "#vue-app",
+        store,
+        components: [sfc]
+    });
+}

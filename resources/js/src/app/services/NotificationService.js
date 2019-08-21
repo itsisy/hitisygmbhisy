@@ -115,6 +115,7 @@ function Notification(data, context)
         id        : id,
         code      : data.code || 0,
         message   : data.message || data || "",
+        placeholder: data.placeholder || null,
         context   : context || "info",
         stackTrace: data.stackTrace || [],
         close     : close,
@@ -127,7 +128,7 @@ function Notification(data, context)
     function close()
     {
         notifications.remove(self);
-        _trigger();
+        trigger();
     }
 
     function closeAfter(timeout)
@@ -135,7 +136,7 @@ function Notification(data, context)
         setTimeout(function()
         {
             notifications.remove(self);
-            _trigger();
+            trigger();
         }, timeout);
     }
 
@@ -184,4 +185,4 @@ function NotificationList()
     }
 }
 
-export default { log, info, warn, error, success, getNotifications, listen }
+export default { log, info, warn, error, success, getNotifications, listen };
