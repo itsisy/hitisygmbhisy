@@ -13,15 +13,6 @@
                         "defaultValue": "Ceres Webshop"
                     }
                 },
-                "header.company_logo": {
-                    "type": "inputFile",
-                    "required": false,
-                    "deprecated": true,
-                    "label": "Config.headerCompanyLogoLabel",
-                    "options": {
-                        "defaultValue": "images/ceres-logo.svg"
-                    }
-                },
                 "global.favicon": {
                     "type": "inputFile",
                     "required": false,
@@ -4142,15 +4133,6 @@
         "Config.DesignTab": {
             "label": "Config.designTab",
             "formFields": {
-                "brand-primary": {
-                    "type": "colorPicker",
-                    "required": false,
-                    "scss": true,
-                    "label": "Config.brandPrimaryLabel",
-                    "options": {
-                        "defaultValue": "#008ebd"
-                    }
-                },
                 "brand-secondary": {
                     "type": "colorPicker",
                     "required": false,
