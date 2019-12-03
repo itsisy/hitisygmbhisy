@@ -40,13 +40,13 @@ class PushAssets extends Middleware
                 $linkHeader .= '<' .$file. '>; as=' . $type . '; rel=preload';
             }
         }
-        $response->make(
+
+        return $response->make(
             $response->content(),
             $response->status(),
             [
                 'Link' => $linkHeader
             ]
         );
-        return $response;
     }
 }
