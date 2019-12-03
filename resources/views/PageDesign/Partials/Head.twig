@@ -70,6 +70,12 @@
 {% set defaultCSS = plugin_path("Ceres") ~ "/css/" ~ assetName ~ ".css?v=" ~ buildHash %}
 {% set defaultSCSS = plugin_path("Ceres") ~ "/css/" ~ assetName ~ ".scss?v=" ~ buildHash %}
 
+{% if ceresConfig.log.performanceLevel  == 'development' %}
+    <link rel="preload" as="script" href="{{  plugin_path('Ceres') }}/js/dist/{{ assetName }}.js?v={{ buildHash }}">
+{% else %}
+    <link rel="preload" as="script" href="{{  plugin_path('Ceres') }}/js/dist/{{ assetName }}.min.js?v={{ buildHash }}">
+{% endif %}
+
 <link rel="preload" as="style" href="{{ defaultCSS }}">
 {% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
     <link rel="stylesheet" href="{{ defaultCSS }}"{% if isShopBuilder %} data-sass-root="{{ plugin_path('Ceres') }}" data-sass-original="{{ defaultSCSS }}"{% endif %}>

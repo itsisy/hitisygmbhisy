@@ -84,7 +84,7 @@ class TemplateServiceProvider extends ServiceProvider
     public function register(){
         $this->getApplication()->singleton( CeresConfig::class );
         $this->getApplication()->singleton( DefaultSettingsService::class );
-        $this->addGlobalMiddleware(PushAssets::class);
+//        $this->addGlobalMiddleware(PushAssets::class);
     }
 
     public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
