@@ -19,6 +19,7 @@ use Ceres\Extensions\TwigJsonDataContainer;
 use Ceres\Extensions\TwigLayoutContainerInternal;
 use Ceres\Extensions\TwigStyleScriptTagFilter;
 use Ceres\Hooks\CeresAfterBuildPlugins;
+use Ceres\Middlewares\PushAssets;
 use Ceres\Wizard\ShopWizard\Services\DefaultSettingsService;
 use Ceres\Wizard\ShopWizard\ShopWizard;
 use IO\Extensions\Constants\ShopUrls;
@@ -83,6 +84,7 @@ class TemplateServiceProvider extends ServiceProvider
     public function register(){
         $this->getApplication()->singleton( CeresConfig::class );
         $this->getApplication()->singleton( DefaultSettingsService::class );
+        $this->addGlobalMiddleware(PushAssets::class);
     }
 
     public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
