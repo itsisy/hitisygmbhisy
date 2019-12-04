@@ -1,9 +1,16 @@
 .widget-step-by-step-navigation {
     .nav-item {
         background-color: white;
+        height: 100%;
+        flex-direction: column;
     }
     .nav-text {
         background-color: $gray-lighter2;
+        flex: auto;
+
+        span {
+            align-self: center;
+        }
     }
     img {
         width: 100%;
@@ -15,4 +22,10 @@
         top: 0;
         bottom: 0;
     }
+    
+    &.widget-none {
+        span {
+            color: black;
+        }
+    } 
 }
