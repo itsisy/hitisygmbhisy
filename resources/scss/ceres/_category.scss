@@ -4,8 +4,6 @@
 // External Libs
 // ==========================================================================
 @import "~bootstrap/scss/bootstrap";
-
-@import "~font-awesome/scss/font-awesome";
 @import "~font-awesome/scss/variables";
 @import "~font-awesome/scss/mixins";
 
@@ -35,7 +33,7 @@
 @import "~font-awesome/scss/icons";
 @import "~font-awesome/scss/screen-reader";
 
-@import "~flag-icon-css/sass/flag-icon";
+@import "plugins/flag-icon";
 
 // ==========================================================================
 // Custom styles
@@ -58,7 +56,6 @@
 @import "plugins/owl-carousel";
 
 // Components
-@import "components/accordion";
 @import "components/alerts";
 @import "components/anicon";
 @import "components/component-base";
@@ -70,7 +67,6 @@
 @import "components/tooltip";
 
 // Forms
-@import "forms/input-groups";
 @import "forms/inputs";
 
 // Page Design / Global components
@@ -83,13 +79,11 @@
 
 // Templates
 @import "views/Templates/AddressSelect/address-select";
-@import "views/Templates/BasketItemList/basket-item";
 @import "views/Templates/BasketItemList/basket-list-item";
 @import "views/Templates/BasketPreview/basket-preview-hover";
 @import "views/Templates/BasketPreview/basket-preview";
 @import "views/Templates/BasketTotalSum/basket-total-sum";
 @import "views/Templates/CategoryListItem/category-list-item";
-@import "views/Templates/Customer/contact";
 @import "views/Templates/Customer/login";
 @import "views/Templates/Item/quantity-input";
 @import "views/Templates/ItemListSort/pagination";

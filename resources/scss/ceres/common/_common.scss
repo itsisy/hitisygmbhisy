@@ -167,3 +167,7 @@ a:active {
     @extend .fa-circle;
     color: transparent !important;
 }
+
+.no-pointer-events {
+    pointer-events: none;
+}
