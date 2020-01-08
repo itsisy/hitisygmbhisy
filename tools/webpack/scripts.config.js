@@ -1,5 +1,6 @@
 const path = require("path");
 const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 module.exports = env =>
 {
@@ -44,18 +45,31 @@ module.exports = env =>
                     ]
                 },
                 {
-                    test: /\.m?js$/,
-                    exclude: /node_modules/,
-                    use: {
-                        loader: "babel-loader"
-                    }
+                    test: /\.vue$/,
+                    loader: "vue-loader"
+                },
+                // this will apply to both plain `.js` files
+                // AND `<script>` blocks in `.vue` files
+                {
+                    test: /\.js$/,
+                    loader: "babel-loader"
+                },
+                // this will apply to both plain `.css` files
+                // AND `<style>` blocks in `.vue` files
+                {
+                    test: /\.css$/,
+                    use: [
+                        "vue-style-loader",
+                        "css-loader"
+                    ]
                 }
             ]
         },
         plugins: [
             new MomentLocalesPlugin({
                 localesToKeep: ["de", "en", "fr", "it", "es", "tr", "nl", "pl", "se", "ru", "sk", "pt", "bg", "ro"]
-            })
+            }),
+            new VueLoaderPlugin()
         ]
     };
 };

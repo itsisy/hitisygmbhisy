@@ -14,6 +14,22 @@ import Vuex from "vuex";
 window.Vue = Vue;
 window.Vuex = Vuex;
 
+const mount = Vue.prototype.$mount;
+
+Vue.prototype.$mount = function(el, hydrating)
+{
+    const options = this.$options;
+
+    if (options.templateOverride && typeof options.templateOverride === "string" && options.templateOverride.charAt(0) === "#" && document.querySelector(options.templateOverride))
+    {
+        const renderFunctions = Vue.compile(document.querySelector(options.templateOverride).innerHTML);
+
+        Object.assign(options, renderFunctions);
+    }
+
+    return mount.call(this, el, hydrating);
+};
+
 Vue.use(require("vue-script2"));
 
 import jQuery from "jquery";
